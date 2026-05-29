@@ -7,14 +7,17 @@
   <title>从 0 到 1 带你速通 Codex，做出第一个 iOS App</title>
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f4f1ea;
-      --paper: #fffdf8;
-      --ink: #202124;
-      --muted: #666a70;
-      --line: #e4ded2;
-      --accent: #0f766e;
-      --accent-2: #b45309;
+      color-scheme: dark;
+      --bg: #120f26;
+      --bg-2: #21183f;
+      --paper: #f8f1d8;
+      --ink: #171525;
+      --muted: #625c70;
+      --line: #171525;
+      --accent: #00d9ff;
+      --accent-2: #ffcc33;
+      --accent-3: #ff4fa3;
+      --shadow: #000000;
     }
 
     * {
@@ -23,136 +26,254 @@
 
     html {
       margin: 0;
-      background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Courier New", ui-monospace, monospace;
       line-height: 1.75;
+      background:
+        linear-gradient(rgba(255,255,255,0.035) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 2px, transparent 2px),
+        radial-gradient(circle at 18% 8%, rgba(0, 217, 255, 0.28), transparent 26%),
+        radial-gradient(circle at 90% 20%, rgba(255, 79, 163, 0.22), transparent 28%),
+        linear-gradient(135deg, var(--bg), var(--bg-2));
+      background-size: 28px 28px, 28px 28px, auto, auto, auto;
     }
 
     body {
-      max-width: 860px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 56px 22px 80px;
+      padding: 44px 18px 72px;
+    }
+
+    body::before {
+      content: "CODEX QUEST / IOS APP RUN";
+      display: block;
+      width: fit-content;
+      margin: 0 auto 18px;
+      padding: 8px 14px;
+      color: #fff8d6;
+      background: #171525;
+      border: 4px solid var(--accent-2);
+      box-shadow: 6px 6px 0 var(--shadow);
+      font-weight: 900;
+      letter-spacing: 0;
     }
 
     main {
+      position: relative;
       background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 44px 52px;
-      box-shadow: 0 24px 80px rgba(34, 28, 19, 0.08);
+      border: 6px solid var(--line);
+      border-radius: 0;
+      padding: 42px 48px;
+      box-shadow: 14px 14px 0 var(--shadow);
+    }
+
+    main::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      pointer-events: none;
+      border: 2px dashed rgba(23, 21, 37, 0.24);
+    }
+
+    header {
+      margin: -12px -12px 28px;
+      padding: 22px 24px;
+      color: #fff8d6;
+      background: #171525;
+      border: 4px solid var(--line);
+      box-shadow: 8px 8px 0 var(--accent);
     }
 
     h1 {
       margin: 0 0 28px;
-      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-size: clamp(2rem, 5vw, 3.45rem);
       line-height: 1.12;
       letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #fff8d6;
+      text-shadow: 4px 4px 0 #000;
+    }
+
+    body > main > h1 {
+      padding: 18px 20px;
+      color: #171525;
+      background: var(--accent-2);
+      border: 4px solid var(--line);
+      box-shadow: 8px 8px 0 var(--shadow);
     }
 
     h2 {
-      margin-top: 56px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      font-size: 1.65rem;
+      margin-top: 58px;
+      padding: 14px 18px;
+      color: #fff8d6;
+      background: #2a2056;
+      border: 4px solid var(--line);
+      box-shadow: 7px 7px 0 var(--accent-3);
+      font-size: 1.55rem;
       line-height: 1.25;
     }
 
     h3, h4, h5, h6 {
-      margin-top: 32px;
+      margin-top: 34px;
       line-height: 1.35;
+      color: #2a2056;
     }
 
     p {
       margin: 1.05em 0;
-      font-size: 1.04rem;
+      font-size: 1.03rem;
     }
 
     strong {
-      color: #111827;
-      font-weight: 800;
+      color: #000;
+      background: linear-gradient(transparent 58%, rgba(255, 204, 51, 0.75) 58%);
+      font-weight: 900;
     }
 
     a {
-      color: var(--accent);
-      text-decoration-thickness: 0.08em;
-      text-underline-offset: 0.18em;
+      color: #005a8d;
+      font-weight: 800;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 4px;
+    }
+
+    figure {
+      margin: 34px 0;
+      padding: 12px;
+      background: #fff8d6;
+      border: 5px solid var(--line);
+      box-shadow: 9px 9px 0 var(--shadow);
     }
 
     img {
       display: block;
       max-width: 100%;
       height: auto;
-      margin: 28px auto;
-      border-radius: 12px;
-      border: 1px solid var(--line);
+      margin: 0 auto;
+      border-radius: 0;
+      border: 4px solid var(--line);
       background: #fff;
+      image-rendering: auto;
+    }
+
+    figcaption {
+      display: none;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 26px 0;
+      margin: 30px 0;
       overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      font-size: 0.98rem;
+      border: 5px solid var(--line);
+      box-shadow: 8px 8px 0 var(--shadow);
+      font-size: 0.96rem;
+      background: #fff8d6;
     }
 
     th, td {
       padding: 13px 15px;
-      border-bottom: 1px solid var(--line);
+      border: 3px solid var(--line);
       vertical-align: top;
       text-align: left;
     }
 
     th {
-      background: #efe9dc;
-      color: #2f2a22;
-      font-weight: 800;
+      background: var(--accent);
+      color: #08101c;
+      font-weight: 900;
     }
 
-    tr:last-child td {
-      border-bottom: 0;
+    tr:nth-child(even) td {
+      background: #f0e6c7;
     }
 
     code, pre {
-      font-family: "SFMono-Regular", Consolas, monospace;
+      font-family: "Courier New", ui-monospace, monospace;
+    }
+
+    code {
+      padding: 2px 5px;
+      color: #fff8d6;
+      background: #171525;
+      border: 2px solid #000;
     }
 
     pre {
       overflow-x: auto;
       padding: 18px;
-      border-radius: 12px;
-      background: #171a1f;
-      color: #f8fafc;
+      border-radius: 0;
+      border: 5px solid var(--line);
+      background: #171525;
+      color: #fff8d6;
       line-height: 1.55;
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+
+    pre code {
+      padding: 0;
+      border: 0;
+      background: transparent;
     }
 
     blockquote {
-      margin: 24px 0;
+      margin: 26px 0;
       padding: 16px 20px;
-      border-left: 4px solid var(--accent);
-      background: #eef7f5;
-      color: #25423e;
+      border: 5px solid var(--line);
+      background: #dffaff;
+      color: #17212f;
+      box-shadow: 7px 7px 0 var(--accent-2);
     }
 
     ul, ol {
-      padding-left: 1.4em;
+      padding-left: 1.35em;
     }
 
     li {
-      margin: 0.35em 0;
+      margin: 0.4em 0;
+    }
+
+    li::marker {
+      color: var(--accent-3);
+      font-weight: 900;
     }
 
     @media (max-width: 720px) {
       body {
-        padding: 18px 12px 48px;
+        padding: 22px 10px 48px;
+      }
+
+      body::before {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 0.82rem;
       }
 
       main {
-        padding: 28px 20px;
-        border-radius: 12px;
+        padding: 26px 16px;
+        border-width: 4px;
+        box-shadow: 8px 8px 0 var(--shadow);
+      }
+
+      header {
+        margin: -6px -6px 24px;
+        box-shadow: 5px 5px 0 var(--accent);
+      }
+
+      body > main > h1,
+      h2,
+      figure,
+      table,
+      pre,
+      blockquote {
+        box-shadow: 5px 5px 0 var(--shadow);
       }
 
       table {
