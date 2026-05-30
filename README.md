@@ -1,11 +1,5 @@
 # 从 0 到 1 带你速通 Codex，做出第一个 iOS App
 
-最近 Codex 的热度，真的有点直线飙升。
-
-社群里一直有人问：**能不能出一篇新的 Codex 入门教程？**
-
-![图片](https://upload.maynor1024.live/file/1780037533926_article-01.png)
-
 我在二月份写过一篇 [Codex 的教程](https://mp.weixin.qq.com/s?__biz=MzIyMzA5NjEyMA==&mid=2647679828&idx=1&sn=6e1c0a935c70c566ee765c02a36327a6&scene=21#wechat_redirect)，但说实话，那时候的 Codex 和现在已经不是一个状态了。
 
 现在的 Codex，明显进入了爆更模式。
